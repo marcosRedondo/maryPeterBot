@@ -1,40 +1,42 @@
 # Inventario de hardware
 
-**Proyecto:** Robot cortacésped autónomo  
-**Estado:** Inventario provisional; pendiente de comprobación física  
-**Última revisión:** 2026-10-07
+**Proyecto:** Robot cortacésped autónomo
+**Estado:** Inventario recopilado; faltan identificaciones y comprobaciones físicas puntuales
+**Última actualización:** 2026-10-13
 
-Este inventario registra únicamente el material disponible para los prototipos iniciales. Los elementos sin datos confirmados quedan marcados como pendientes; no se asume que estén disponibles.
+Este inventario recoge el material comunicado en el chat del proyecto **«Inventario Arduino rescatado»**. Las cantidades se transcriben de ese inventario; los modelos, valores eléctricos y compatibilidad que no constan quedan pendientes de comprobación. No se debe inferir un modelo de placa, valor de resistencia ni capacidad de alimentación.
 
-## Controlador y alimentación
+## Control y computación
 
-| Elemento | Cantidad | Modelo / características | Estado | Observaciones |
-|---|---:|---|---|---|
-| Placas ESP32 | Aproximadamente 5 | Modelo desconocido | Provisional, por confirmar | El propietario cree disponer de cinco; confirmar cantidad y modelo/texto impreso en cada placa. |
-| Arduino | 1 | Modelo desconocido | Provisional, por confirmar | Confirmar modelo; no asumir que será necesario para P1. |
-| Cables USB | Pendiente | Tipo y cantidad desconocidos | Provisional, por confirmar | Se mencionan cables USB de carga; confirmar conectores y si permiten transferencia de datos. |
-| Fuente de alimentación USB | Pendiente | Desconocida | Pendiente de confirmar | Confirmar si hay cargador/fuente disponible y sus características. |
+| Elemento | Cantidad comunicada | Modelo / características | Estado y observaciones |
+|---|---:|---|---|
+| Placas ESP32 | 5 | Modelo exacto pendiente | Disponibles según el inventario del chat; identificar la placa elegida antes de asignar GPIO. |
+| Arduino | 1 | Arduino Uno | Disponible según el inventario; no necesario para P1. |
+| Raspberry Pi | 1 | Model B; revisión exacta pendiente | Disponible según el inventario; no necesaria para P1. |
 
-## Componentes para el prototipo P1
+## Electrónica y montaje
 
-| Elemento | Cantidad | Modelo / características | Estado | Observaciones |
-|---|---:|---|---|---|
-| LEDs | Pendiente | Pendiente | Por confirmar | Anotar colores y cantidad aproximada. |
-| Resistencias | Pendiente | Valores desconocidos | Provisional, por confirmar | Se cree disponer de resistencias; confirmar cantidad y valores. |
-| Pulsadores | Pendiente | Pendiente | Por confirmar | Indicar cantidad y tipo si se conoce. |
-| Protoboard | Pendiente | Pendiente | Por confirmar | Anotar tamaño aproximado. |
-| Cables jumper | Pendiente | Pendiente | Por confirmar | Indicar tipos/cantidades aproximadas. |
+| Elemento | Cantidad comunicada | Modelo / características | Estado y observaciones |
+|---|---:|---|---|
+| Protoboard | 1 | Tamaño/modelo pendiente | Disponible según el inventario. |
+| Cables Dupont | 1 lote | Tipos y cantidades por comprobar | Disponibles según el inventario. |
+| Resistencias | 1 lote | Valores y cantidades pendientes | Disponibles según el inventario; identificar valores antes de conectar LEDs. |
+| Módulo de relé | 1 | Un canal; modelo y tensión de bobina pendientes | Disponible; queda fuera del alcance P1. |
+| Pulsadores | 5 | Tipo pendiente | Disponibles; P1 puede comenzar sin ellos si se usa el monitor serie. |
+| Trimmers/potenciómetros | 3 | Valores pendientes | Disponibles; no necesarios para el alcance actual de P1. |
+| LEDs | 1 lote | Varios colores, aproximadamente 5 mm según inspección previa | Disponibles; cantidad exacta y características eléctricas pendientes. |
+| Componentes pequeños sin identificar | 2 | Sin identificar | No asignarles uso hasta identificarlos. |
 
-## Otros componentes disponibles
+## Alimentación y conexión al ordenador
 
-| Elemento | Cantidad | Modelo / características | Estado | Uso previsto / notas |
-|---|---:|---|---|---|
-| Pendiente de inventariar | — | — | — | Añadir sensores u otros componentes solo si ya se tienen. |
+| Elemento | Cantidad comunicada | Modelo / características | Estado y observaciones |
+|---|---:|---|---|
+| Portapilas | 1 | Para 3 pilas AA; 4,5 V nominales sin carga | Disponible; no asumir que sea adecuado para alimentar directamente la placa ESP32. |
+| Cable USB para programar ESP32 | Pendiente | Conector, cantidad y capacidad de datos desconocidos | Confirmar un cable de datos compatible. El chat del inventario no confirma cables USB. |
+| Fuente/cargador USB | Pendiente | Características desconocidas | No consta en el inventario recuperado. |
 
-## Resumen provisional comunicado
+## Resumen para P1
 
-Se cree disponer de un Arduino, aproximadamente cinco ESP32, cables, resistencias y cables USB de carga. Cantidades, modelos, valores y estado deben confirmarse antes de diseñar el circuito P1 o asignar pines.
+El inventario comunicado incluye placas ESP32, LEDs, resistencias, protoboard y cables Dupont, por lo que hay material potencial para preparar el prototipo local de P1 sin motores. Antes de cerrar el circuito hay que inspeccionar la placa ESP32 seleccionada, identificar los valores de las resistencias y confirmar la cantidad/características de los LEDs. También falta confirmar un cable USB de datos para programar y usar el monitor serie.
 
-## Hardware necesario para P1
-
-Se decidirá después de confirmar el inventario. La selección de pines y el circuito de prueba se documentarán en la especificación P1, una vez identificado el modelo de ESP32 y los componentes disponibles.
+No se ha confirmado en el chat un circuito concreto, los GPIO, los valores de resistencias, el modelo exacto de ESP32 ni que el portapilas sea una alimentación apropiada para la placa. Esos datos deben verificarse antes de cablear. El móvil y la comunicación inalámbrica corresponden a P2, no a P1.

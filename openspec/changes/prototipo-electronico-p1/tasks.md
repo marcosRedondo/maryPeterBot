@@ -2,7 +2,7 @@
 
 ## 1. Confirmación del hardware y banco de prueba
 
-- [ ] 1.1 Confirmar físicamente el modelo y cantidad de ESP32, la presencia de LEDs y resistencias (incluidos sus valores), y qué cables USB permiten datos; actualizar `docs/project/hardware-inventory.md` y verificar que cada elemento esté marcado como confirmado o pendiente.
+- [ ] 1.1 Revisar físicamente las cinco placas ESP32 comunicadas y anotar el modelo exacto de la placa que se usará; identificar valores de resistencias, cantidad/características de LEDs y un cable USB con datos. Actualizar `docs/project/hardware-inventory.md`, manteniendo como pendientes los datos no comprobados.
 - [ ] 1.2 Seleccionar una placa ESP32 y los componentes de prueba disponibles; documentar diagrama de conexión y GPIO en `docs/project/` y verificar que el esquema corresponde al modelo exacto de la placa y a los valores confirmados.
 
 ## 2. Lógica local de estados

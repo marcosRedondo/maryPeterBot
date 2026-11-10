@@ -9,7 +9,7 @@ El proyecto necesita validar la lógica básica del robot con el ESP32 antes de 
 - Definir el comportamiento del control electrónico local del prototipo P1.
 - Representar salidas del robot mediante LEDs y mantenerlas desactivadas en los estados de parada, error y emergencia.
 - Definir cómo se inicializa el prototipo y cómo se verifican sus estados y transiciones.
-- Documentar el circuito y la asignación de pines después de confirmar el hardware realmente disponible.
+- Partir del inventario comunicado (cinco ESP32 y lotes de LEDs, resistencias y cables Dupont) y documentar el circuito y la asignación de pines después de identificar físicamente la placa, los valores de componentes y un cable USB de datos.
 - Mantener P1 sin motores, cuchilla ni comunicación móvil; esta última pertenece a P2.
 
 ## Capabilities
