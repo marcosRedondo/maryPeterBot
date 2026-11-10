@@ -84,9 +84,9 @@ Aunque las primeras fases no utilicen motores ni cuchillas, la arquitectura del 
 | Fase | Nombre | Objetivo principal |
 |---|---|---|
 | P0 | Definición y preparación | Definir y preparar el proyecto |
-| P1 | Prototipo electrónico | Validar ESP32 y lógica básica |
-| P2 | Comunicación y control | Controlar el prototipo remotamente |
-| P3 | Prototipo móvil | Incorporar motores y movimiento |
+| P1 | Simulación y especificación | Preparar el entorno, modelar y validar virtualmente antes de comprar |
+| P2 | Prototipo electrónico y control | Contrastar la lógica con hardware disponible y control remoto |
+| P3 | Prototipo móvil | Incorporar movimiento tras definir requisitos y compras justificadas |
 | P4 | Sistema de corte | Incorporar y controlar la cuchilla |
 | P5 | Sensores y seguridad | Detectar situaciones peligrosas |
 | P6 | Navegación autónoma | Conseguir movimiento autónomo |
@@ -124,103 +124,47 @@ La documentación inicial y la estructura del proyecto están definidas y el inv
 
 ---
 
-# 5. P1 — Prototipo electrónico básico
+# 5. P1 — Simulación y especificación
 
 ## Objetivo
 
-Construir el primer prototipo **sin motores y sin cuchilla**.
+Preparar el entorno de simulación y validar virtualmente las primeras decisiones de diseño y control antes de comprar componentes.
 
-El objetivo será comprobar que el ESP32, el software y la lógica básica del robot funcionan correctamente.
+## Preparación de software
 
-## Hardware
+- Comprobar sistema operativo, recursos del ordenador y requisitos de las herramientas candidatas.
+- Elegir el simulador apropiado para la primera prueba.
+- Instalarlo y abrir un proyecto de ejemplo para confirmar que funciona.
+- Registrar versiones, pasos de instalación y cualquier limitación del entorno.
 
-Inicialmente:
+La elección concreta del software se hará tras comparar las opciones pertinentes; este roadmap no presupone todavía una herramienta.
 
-- ESP32.
-- LEDs.
-- Resistencias.
-- Pulsadores, si están disponibles.
-- Cableado.
-- Alimentación USB.
+## Modelo virtual inicial
 
-No se utilizarán todavía:
+Tras verificar el entorno, modelar progresivamente el robot diferencial y una parcela de prueba. Los parámetros se marcarán como conocidos, estimados o pendientes. Los LEDs y el ESP32 quedan para validación posterior con material disponible, no son requisito para empezar P1.
 
-- Motores.
-- Drivers de motores.
-- Motor de cuchilla.
-- Batería principal del robot.
+El modelo virtual no depende de asignar GPIO ni de conectar componentes físicos. Los parámetros no confirmados se identificarán como estimaciones o pendientes.
 
-## Simulación
+## Pruebas virtuales iniciales
 
-Los LEDs representarán diferentes elementos del robot.
+La primera versión debe permitir:
 
-Por ejemplo:
-
-| LED | Representación |
-|---|---|
-| LED 1 | Motor izquierdo |
-| LED 2 | Motor derecho |
-| LED 3 | Cuchilla |
-| LED 4 | Estado del robot |
-| LED 5 | Error/emergencia |
-
-No significa que estos sean necesariamente los LEDs definitivos; son únicamente una herramienta de simulación.
-
-## Software
-
-Crear una primera estructura de software que permita:
-
-- Inicializar el ESP32.
-- Gestionar entradas.
-- Gestionar salidas.
-- Gestionar estados.
-- Ejecutar comandos.
-- Detectar errores.
-- Gestionar parada.
-
-## Estados iniciales
-
-Como mínimo:
-
-```text
-OFF
-READY
-RUNNING
-STOPPED
-ERROR
-EMERGENCY
-```
+- Cargar el escenario y el robot.
+- Ejecutar avance, retroceso, giro y parada.
+- Repetir recorridos y observar el resultado.
+- Registrar supuestos y limitaciones del modelo.
 
 ## Pruebas
 
-Se comprobará:
-
-- Encendido.
-- Inicialización.
-- Cambio de estados.
-- Activación de salidas.
-- Parada.
-- Simulación de error.
-- Simulación de emergencia.
+Se comprobará que el robot virtual puede avanzar, retroceder, girar y detenerse, que los escenarios se pueden repetir con la misma configuración y que cada resultado registra supuestos relevantes.
 
 ## Resultado esperado
 
-Tener sobre la mesa un **robot virtual** representado mediante LEDs.
-
-Por ejemplo:
-
-```text
-          ESP32
-            │
-    ┌───────┼────────┐
-    │       │        │
- Motor L  Motor R  Cuchilla
-   LED      LED       LED
-```
+Tener un **robot virtual** que se mueva de forma repetible en un escenario de prueba.
 
 ## Criterio de finalización
 
-La lógica principal funciona correctamente y todas las transiciones de estado previstas han sido probadas.
+El simulador está instalado y verificado con un ejemplo, existe un modelo virtual configurable con un escenario de prueba y las pruebas de movimiento básico son repetibles y documentadas.
 
 ---
 
@@ -228,20 +172,15 @@ La lógica principal funciona correctamente y todas las transiciones de estado p
 
 ## Objetivo
 
-Añadir comunicación inalámbrica y controlar el prototipo desde otro dispositivo.
-
-Inicialmente seguirá sin haber motores.
-
-Los LEDs continuarán simulando el comportamiento del robot.
+Contrastar con el hardware ya disponible partes seleccionadas de la lógica validada en P1 y, si aporta valor, conectar el control móvil al simulador o al ESP32. No se comprarán motores para esta fase.
 
 ## Funcionalidades
 
-- Comunicación Bluetooth.
-- Conexión con dispositivo de control.
-- Envío de comandos.
-- Recepción de comandos.
-- Respuesta del ESP32.
-- Información del estado actual.
+- Seleccionar la hipótesis de P1 que conviene contrastar físicamente.
+- Identificar el ESP32 y los componentes disponibles que se usarán.
+- Implementar la lógica de control correspondiente y verificarla localmente.
+- Añadir comunicación inalámbrica y control móvil si forma parte del objetivo acordado para P2.
+- Gestionar respuesta de estado, comandos inválidos y pérdida de conexión.
 
 ## Comandos iniciales
 
@@ -260,9 +199,7 @@ EMERGENCY
 STATUS
 ```
 
-Estos comandos no controlarán todavía motores reales.
-
-Controlarán los LEDs y estados del prototipo.
+Los comandos de movimiento se usarán contra el simulador o se representarán con salidas de prueba; no accionarán motores físicos en P2.
 
 ## Seguridad
 
@@ -275,11 +212,11 @@ Se deberá estudiar desde esta fase el comportamiento ante:
 
 ## Resultado esperado
 
-Poder controlar desde el dispositivo de prueba un "robot virtual" mediante Bluetooth.
+Demostrar con componentes disponibles que la lógica seleccionada funciona y, si se incluye en el alcance acordado, controlar el robot virtual desde el móvil.
 
 ## Criterio de finalización
 
-Todos los comandos definidos funcionan correctamente y el robot entra en un estado seguro cuando se pierde la comunicación o se produce una condición de emergencia.
+Los escenarios acordados para P2 son repetibles, el sistema gestiona estados seguros ante errores y pérdida de comunicación, y los resultados quedan documentados.
 
 ---
 
@@ -561,22 +498,9 @@ Después se podrá comenzar la siguiente.
 
 La compra de componentes se realizará de forma progresiva.
 
-### Primera etapa
+### Antes de P3
 
-No comprar componentes específicos del robot si pueden evitarse.
-
-Utilizar:
-
-- ESP32 disponible.
-- LEDs.
-- Resistencias.
-- Pulsadores.
-- Cableado.
-- Alimentación existente.
-
-### Segunda etapa
-
-Cuando P1 y P2 estén validadas, estudiar las compras necesarias para P3.
+Completar P1 y P2, convertir resultados en requisitos para movimiento, comparar alternativas de componentes y justificar cada compra. El inventario existente se aprovechará cuando sea compatible y seguro.
 
 ### Tercera etapa
 
@@ -608,15 +532,13 @@ Estas decisiones se documentarán mediante especificaciones concretas cuando lle
 
 # 17. Próximo paso
 
-El siguiente paso es completar **P0 — Definición y preparación**. El inventario se mantendrá en [hardware-inventory.md](hardware-inventory.md). Al terminar P0, se iniciará **P1 — Prototipo electrónico básico**; la comunicación móvil se añadirá después en P2.
+El siguiente paso es preparar el entorno de simulación de **P1**. El inventario de hardware se mantiene en [hardware-inventory.md](hardware-inventory.md), pero su inspección física no bloquea la instalación ni las pruebas virtuales.
 
 Para cerrar P0 y preparar P1 se deberá:
 
-1. Inventariar el ESP32 y los componentes disponibles, y documentar el inventario.
-2. Identificar qué hardware puede utilizarse en el prototipo inicial.
-3. Completar la configuración de OpenSpec en el repositorio.
-4. Definir el circuito de prueba y los estados iniciales de P1.
-5. Crear y validar la especificación OpenSpec de P1.
-6. Implementar y probar P1, y documentar los resultados antes de avanzar a P2.
+1. Comprobar sistema operativo y recursos del equipo.
+2. Comparar simuladores candidatos y elegir uno compatible con el objetivo inicial.
+3. Instalarlo y verificar su funcionamiento con un ejemplo.
+4. Después, definir el modelo virtual, sus parámetros y las pruebas de movimiento.
 
-**Principio:** primero demostrar la lógica con LEDs; después controlar dispositivos reales.
+**Principio:** primero preparar y validar el entorno virtual; después usar los resultados para orientar validaciones físicas y compras justificadas.
