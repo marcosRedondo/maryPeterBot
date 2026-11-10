@@ -7,7 +7,8 @@ Antes de comprar componentes de tracción, batería o sensores, MaryPeterBot nec
 ## What Changes
 
 - Reorientar P1 a preparar el entorno y validar el funcionamiento básico del robot en simulación.
-- Instalar y verificar una herramienta de simulación compatible con el equipo disponible, después de comparar opciones.
+- Comparar herramientas de simulación gratuitas y elegir una compatible con Windows.
+- Probar el candidato mejor valorado con un ejemplo funcional; evaluar el siguiente solo si el primero no cumple los criterios.
 - Modelar un robot diferencial configurable y un escenario de prueba, distinguiendo parámetros conocidos, estimados y pendientes.
 - Probar órdenes de avance, retroceso, giro y parada de forma repetible.
 - Dejar la validación electrónica con ESP32 y LEDs para P2, usando material existente cuando sea posible.

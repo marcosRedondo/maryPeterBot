@@ -3,8 +3,9 @@
 ## 1. Preparación del entorno
 
 - [ ] 1.1 Confirmar sistema operativo, recursos disponibles y restricciones del equipo.
-- [ ] 1.2 Comparar herramientas candidatas por compatibilidad, instalación, soporte de robot diferencial y facilidad para repetir pruebas; registrar la decisión.
-- [ ] 1.3 Instalar la herramienta elegida, registrar versión y pasos, abrir un ejemplo y resolver errores de configuración.
+- [ ] 1.2 Comparar simuladores gratuitos por compatibilidad con Windows, soporte de robot diferencial y facilidad de uso; registrar criterios y recomendación.
+- [ ] 1.3 Instalar el candidato mejor valorado, registrar versión y pasos y ejecutar un ejemplo básico.
+- [ ] 1.4 Si el candidato no cumple los criterios o no funciona en el equipo, documentar el motivo y probar el siguiente; detener la comparación al validar una opción.
 
 ## 2. Especificación del modelo
 
