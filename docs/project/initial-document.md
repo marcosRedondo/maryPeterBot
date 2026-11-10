@@ -28,32 +28,32 @@ El orden y el alcance de cada fase podrán ajustarse a partir de los resultados 
 La planificación detallada de las fases se mantiene en [roadmap.md](roadmap.md). Para evitar duplicar esa planificación, este documento fija la visión general y resume el alcance de las primeras fases:
 
 - **P0 — Definición y preparación:** organizar la documentación y el repositorio, preparar OpenSpec e inventariar el hardware disponible.
-- **P1 — Prototipo electrónico básico:** validar el ESP32, la lógica y los estados mediante LEDs, sin motores ni cuchilla.
-- **P2 — Comunicación y control:** añadir comunicación inalámbrica entre el móvil y el ESP32 y controlar el prototipo de LEDs.
+- **P1 — Simulación y especificación:** definir robot, entorno, control y criterios de éxito; validar comportamiento virtual sin comprar componentes.
+- **P2 — Prototipo electrónico y control:** aprovechar el hardware disponible para validar electrónica y, después, comunicación móvil, antes de comprar componentes adicionales.
 
-La antigua descripción de una única «Fase 0 — Prototipo de control» queda sustituida por P1 y P2: primero se valida la electrónica y la lógica local; después se añade el control remoto.
+La prioridad de P1 y P2 se actualiza: primero se simula y especifica; luego se valida físicamente con componentes disponibles.
 
-### Alcance de P1 — Prototipo electrónico básico
+### Alcance de P1 — Simulación y especificación
 
-El prototipo inicial estará basado en:
+La primera iteración será virtual y estará basada en parámetros configurables:
 
-- Una placa ESP32 como controlador.
-- LEDs y, si están disponibles, pulsadores para representar y probar salidas, estados y entradas.
+- Geometría y cinemática aproximadas del robot, identificadas como estimaciones.
+- Escenario de prueba basado en las parcelas conocidas, con obstáculos configurables.
+- Órdenes manuales básicas y criterios medibles de comportamiento.
 
-P1 valida el arranque, la lógica y las transiciones de estado sin comunicación inalámbrica, tracción ni cuchillas. La comunicación con el móvil se incorpora en P2.
+P1 valida el movimiento, control y escenarios virtuales. La herramienta de simulación se elegirá tras comprobar compatibilidad con Windows y el alcance. No requiere electrónica ni compras.
 
 ### Criterios de éxito
 
 P1 se considerará completada cuando:
 
-- El ESP32 inicialice y gestione las entradas, salidas y estados definidos para el prototipo.
-- Los LEDs representen claramente los estados y las salidas simuladas.
-- Se puedan probar la parada, el error y la emergencia.
-- Las transiciones previstas puedan repetirse y verificarse sin componentes definitivos.
+- Exista un modelo virtual configurable del robot y un escenario de prueba documentado.
+- Se puedan ejecutar y repetir avance, retroceso, giro y parada.
+- Los supuestos y límites del modelo estén documentados y las pruebas de aceptación sean reproducibles.
 
-### Alcance de P2 — Comunicación y control
+### Alcance de P2 — Validación electrónica y control
 
-P2 añadirá comunicación inalámbrica entre el móvil y el ESP32, comandos y respuestas de estado. Los comandos seguirán controlando la lógica y los LEDs; todavía no habrá motores ni cuchilla. El método de comunicación, el protocolo y los criterios de pérdida de conexión se concretarán en la especificación de P2.
+P2 podrá conectar la interfaz de control al simulador y reutilizar la lógica en el ESP32 disponible, usando LEDs como salidas de prueba. Se decidirá tras P1 qué validación física aporta valor. Motores y cuchilla siguen fuera de alcance; cualquier compra requerirá requisitos y justificación previos.
 
 ## 5. Arquitectura conceptual
 

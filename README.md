@@ -4,7 +4,7 @@ Proyecto de desarrollo incremental de un robot cortacésped autónomo. El trabaj
 
 ## Estado actual
 
-El proyecto está en **P0 — Definición y preparación**. La propuesta OpenSpec, `prototipo-electronico-p1`, define el prototipo electrónico local con ESP32 y salidas simuladas mediante LEDs; la comunicación móvil se abordará después en P2. El inventario recoge el material comunicado, pero el modelo exacto de ESP32 y varios datos eléctricos siguen pendientes antes de fijar circuito y pines.
+El proyecto está en **P0 — Definición y preparación**, con nuevo enfoque en simulación previa a compras. Se revisará la propuesta OpenSpec `prototipo-electronico-p1` para comenzar con modelos y pruebas virtuales; el ESP32 y los LEDs quedan como validación física posterior con material disponible.
 
 ## Documentación
 
@@ -18,4 +18,4 @@ El proyecto está en **P0 — Definición y preparación**. La propuesta OpenSpe
 
 ## Próximo paso
 
-Comprobar físicamente el modelo de ESP32, los valores de resistencias, los LEDs y un cable USB de datos; completar esos datos antes de definir el circuito de prueba de P1.
+Definir el alcance, los parámetros conocidos y pendientes y los criterios de éxito de la primera simulación antes de decidir compras.
